@@ -55,8 +55,7 @@ ROOT_URLCONF = 'django_crone_job.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates/crone_job')]
-		,
+        'DIRS': [os.path.join(BASE_DIR, 'templates/crone_job')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

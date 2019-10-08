@@ -7,7 +7,18 @@
 			<form action="{% url 'register' %}" method="POST">
 				{% csrf_token %}
 				{% if form.errors %}
-					<p>Your form has error...</p>
+					<div class="alert alert-warning alert-dismissable" role="alert">
+						<button class="close" data-dismiss="alert">
+							<small><sup>x</sup></small>
+						</button>
+						<p>Your form has error...</p>
+						{% for field in form %}
+							{% if field.errors %}
+								{{ field.errors }}
+							{% endif %}
+						{% endfor %}
+					</div>
+
 				{% endif %}
 				{{ form.as_p }}
 				<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Register</button>
