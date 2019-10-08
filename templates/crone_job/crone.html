@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<form method="POST">
+		{% csrf_token %}
+
+		<!-- START Title and Address -->
+		<div class="title-http mb-5">
+
+			<h5 class="pb-3">Titel und Addrese</h5>
+
+			<div class="form-group">
+				<input type="text" id="title" class="form-control" name="title" aria-describedby="title" placeholder="Enter Titel" required>
+			</div>
+			<div class="form-group">
+				<input type="text" id="url" class="form-control" name="url" placeholder="http://" required>
+			</div>
+		</div>
+		<!-- END Title and Address -->
+
+		<!-- START User and Password -->
+		<div class="user-pass mb-5">
+			<div class="form-group form-check">
+				<input type="checkbox" class="form-check-input" id="httpAuth" name="http">
+				<label class="form-check-label" for="httpAuth"><strong>Erforder HTTP-Authentifizierung</strong></label>
+			</div>
+			<div class="form-group">
+				<input type="text" name="userweb" class="form-control" id="user" aria-describedby="username" placeholder="Benutzername">
+			</div>
+			<div class="form-group">
+				<input type="password" name="password" class="form-control" id="password" placeholder="Passwort">
+			</div>
+		</div>
+		<!-- END User and Password -->
+
+		<!-- START Execution -->
+		<div class="execution mb-5">
+			<h5 class="pb-3">Ausführung</h5>
+
+			<div class="custom-form">
+				<!-- START Minutes -->
+				<div class="minutes custom-form_flex">
+					<div class="form-check custom-form_radio-btn">
+  						<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+  						<label class="form-check-label" for="exampleRadios1">
+    						Alle
+  						</label>
+					</div>
+
+					<div class="input-group mb-3 custom-label-width">
+						<select class="custom-select minutes-select"></select>
+						<div class="input-group-append">
+							<label class="input-group-text" for="inputGroupSelect02">Minute(n)</label>
+						</div>
+					</div>
+				</div>
+				<!-- END Minutes -->
+				<hr>
+				<!-- START Days -->
+				<div class="hours custom-form_flex">
+					<div class="form-check custom-form_radio-btn">
+  						<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+  						<label class="form-check-label" for="exampleRadios2">
+    						Jeden Tag um
+  						</label>
+					</div>
+
+					<div class="input-group mb-3 custom-label-width mr-3">
+						<select class="custom-select hours-select"></select>
+						<div class="input-group-append">
+							<label class="input-group-text" for="inputGroupSelect02">Stunde(n)</label>
+						</div>
+					</div>
+
+					<div class="input-group mb-3 custom-label-width">
+						<select class="custom-select minutes-select"></select>
+						<div class="input-group-append">
+							<label class="input-group-text" for="inputGroupSelect02">Minute(n)</label>
+						</div>
+					</div>
+				</div>
+				<!-- END Days -->
+
+				<hr>
+
+				<!-- START Months -->
+				<div class="months custom-form_flex">
+					<div class="form-check custom-form_radio-btn">
+  						<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+  						<label class="form-check-label" for="exampleRadios3">
+    						Immer am
+  						</label>
+					</div>
+
+					<div class="input-group mb-3 custom-label-width mr-3">
+						<select class="custom-select month-select"></select>
+						<div class="input-group-append">
+							<label class="input-group-text" for="inputGroupSelect02">des Monats</label>
+						</div>
+					</div>
+
+					<div class="input-group mb-3 custom-label-width mr-3">
+						<select class="custom-select hours-select"></select>
+						<div class="input-group-append">
+							<label class="input-group-text" for="inputGroupSelect02">Stunde(n)</label>
+						</div>
+					</div>
+
+					<div class="input-group mb-3 custom-label-width">
+						<select class="custom-select minutes-select"></select>
+						<div class="input-group-append">
+							<label class="input-group-text" for="inputGroupSelect02">Minute(n)</label>
+						</div>
+					</div>
+
+				</div>
+				<!-- END Months -->
+
+				<hr>
+				<!-- START UserDef -->
+				<div class="user-def">
+					<div class="form-check custom-form_radio-btn">
+  						<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4">
+  						<label class="form-check-label" for="exampleRadios4">
+    						Benutzerdefiniert
+  						</label>
+					</div>
+				</div>
+				<!-- END UserDef -->
+
+			</div>
+		</div>
+		<!-- END Execution -->
+
+		<!-- START Notifications -->
+		<div class="notifications mb-5">
+			<h5 class="pb-3">Benachrichtigungen</h5>
+			<p>Mich per E-Mail benachrichtigen bei: </p>
+
+			<div class="notifications_checks">
+				<div class="form-group form-check">
+					<input type="checkbox" class="form-check-input" id="jobs">
+					<label class="form-check-label" for="jobs">Fehlschlag des Jobs</label>
+				</div>
+
+				<div class="form-group form-check">
+					<input type="checkbox" class="form-check-input" id="error">
+					<label class="form-check-label" for="error">erfolgreichem Abruf nach vorherigem Fehlslag</label>
+				</div>
+
+				<div class="form-group form-check">
+					<input type="checkbox" class="form-check-input" id="deactivate">
+					<label class="form-check-label" for="deactivate">automatischer Deaktivierung wegen zu vieler Fehlschläge</label>
+				</div>
+			</div>
+		</div>
+		<!-- END Notifications -->
+
+		<div class="general mb-5">
+			<h5 class="pb-3">Allgemein</h5>
+
+			<div class="form-group form-check">
+				<input type="checkbox" class="form-check-input" id="answer">
+				<label class="form-check-label" for="answer">Antwort speichern</label>
+			</div>
+		</div>
+
+		<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Cron-Job Erstellen</button>
+	</form>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

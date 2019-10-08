@@ -1,0 +1,26 @@
+.title-http,
+.user-pass,
+.execution,
+.notifications,
+.general {
+	border: 1px solid cornflowerblue;
+    padding: 1em;
+}
+
+.custom-form_flex {
+	display: flex;
+}
+
+.custom-form_radio-btn {
+	padding-right: 1em;
+    padding-top: .4em;
+}
+
+.hours .custom-label-width {
+	width: 41%;
+}
+
+.months .custom-label-width {
+	width: 27.8%;
+}
+
