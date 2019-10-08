@@ -4,13 +4,19 @@ from django import forms
 
 
 class SignUpForm(UserCreationForm):
-	email = forms.EmailField()
-	first_name = forms.CharField(max_length=100)
-	last_name =  forms.CharField(max_length=100)
+	email = forms.EmailField(widget=forms.TextInput(attrs={'class':'form-control'}))
+	first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control'}))
+	last_name =  forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control'}))
 
 	class Meta:
 		model = User
 		fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
 
-
-
+	def __init__(self, *args, **kwargs):
+		super(SignUpForm, self).__init__(*args, **kwargs)
+		self.fields['username'].widget.attrs['class'] = 'form-control'
+		self.fields['username'].help_text = ''
+		self.fields['password1'].widget.attrs['class'] = 'form-control'
+		self.fields['password1'].help_text = ''
+		self.fields['password2'].widget.attrs['class'] = 'form-control mb-5'
+		self.fields['password2'].help_text = ''
