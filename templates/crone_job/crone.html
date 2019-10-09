@@ -5,11 +5,24 @@
 {% block content %}
 	<!-- This content show only if user is logged in -->
 	{% if user.is_authenticated %}
+		<h2>Cron-Job erstellen</h2>
+
+		<p class="text-justify">
+			Fühlen Sie das folgende Formular aus, um einen Cron-Job anzulegen. Es werden sowohl http- als auch https- URLs unterstützt.
+			Falls die URL mit HTTP-Authentifizierung gesichert ist (z.B. ".htaccess"-Passwortschutz), hinterlegen Sie bitte auch die entsprechenden
+			Zugangsdaten, damit wir die Webseite korrekt abrufen können.
+		</p>
+
+		<p class="pb-4 text-justify">
+			<em>Hinweis:</em> Weitere erweiterte Einstellungen für Ihren Cron-Job können Sie nach dem Anlegen
+			vornehmen, indem Sie den Job bearbeiten.
+		</p>
+
 		<form method="POST">
 			{% csrf_token %}
 
 			<!-- START Title and Address -->
-			<div class="title-http mb-5">
+			<div class="title-http mb-4">
 
 				<h5 class="pb-3">Titel und Addrese</h5>
 
@@ -23,7 +36,7 @@
 			<!-- END Title and Address -->
 
 			<!-- START User and Password -->
-			<div class="user-pass mb-5">
+			<div class="user-pass mb-4">
 				<div class="form-group form-check">
 					<input type="checkbox" class="form-check-input" id="httpAuth" name="http">
 					<label class="form-check-label" for="httpAuth"><strong>Erforder HTTP-Authentifizierung</strong></label>
@@ -38,7 +51,7 @@
 			<!-- END User and Password -->
 
 			<!-- START Execution -->
-			<div class="execution mb-5">
+			<div class="execution mb-4">
 				<h5 class="pb-3">Ausführung</h5>
 
 				<div class="custom-form">
@@ -139,7 +152,7 @@
 			<!-- END Execution -->
 
 			<!-- START Notifications -->
-			<div class="notifications mb-5">
+			<div class="notifications mb-4">
 				<h5 class="pb-3">Benachrichtigungen</h5>
 				<p>Mich per E-Mail benachrichtigen bei: </p>
 
@@ -162,7 +175,8 @@
 			</div>
 			<!-- END Notifications -->
 
-			<div class="general mb-5">
+			<!-- START General -->
+			<div class="general mb-4">
 				<h5 class="pb-3">Allgemein</h5>
 
 				<div class="form-group form-check">
@@ -170,6 +184,12 @@
 					<label class="form-check-label" for="general">Antwort speichern</label>
 				</div>
 			</div>
+			<!-- END General -->
+
+			<p class="pb-3 text-justify">
+				Mit der Erstellung des Cron-Jobs erklären Sie, dass Sie entweder der Inhaber der abzurufenden Webseite
+				sind oder im Einverständnis des Inhabers handeln.
+			</p>
 
 			<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Cron-Job Erstellen</button>
 		</form>
