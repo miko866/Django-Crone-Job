@@ -17,10 +17,13 @@
 	<!-- Custom CSS -->
   	<link rel="stylesheet" href="{% static 'crone_job/css/style.css' %}" />
 
-    <title>Django Crone Job</title>
+  	<!-- Dynamic Title -->
+    <title>{% block title %} Django Crone Job {% endblock %}</title>
   </head>
   <body>
-  	<div class="navbar navbar-expand-lg navbar-light bg-light">
+
+  	<!-- START Navbar -->
+  	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<button
 				class="navbar-toggler"
 				type="button"
@@ -41,24 +44,29 @@
 
 					{% if user.is_authenticated %}
 						<li class="nav-item">
-							<a class="nav-link" href="{% url 'logout'%}">Logout</a>
+							<a class="nav-link" href="{% url 'logout'%}">Abmeldung</a>
 						</li>
 					{% else %}
 						<li class="nav-item">
-							<a class="nav-link" href="{% url 'login'%}">Login</a>
+							<a class="nav-link" href="{% url 'login'%}">Anmeldung</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{% url 'register'%}">Register</a>
+							<a class="nav-link" href="{% url 'register'%}">Registrieren</a>
 						</li>
 					{% endif %}
 
 				</ul>
 			</div>
-		</div>
+		</nav>
+	<!-- END Navbar -->
+
 	<br />
+
+	<!-- START Content -->
   	<div class="container">
 		<div class="row pt-5 pb-5">
 			<div class="col-10 mx-auto">
+				<!-- START Django flash messages -->
 				{% if messages %}
 					{% for message in messages %}
 						<div class="alert alert-warning alert-dismissable" role="alert">
@@ -69,11 +77,15 @@
 						</div>
 					{% endfor %}
 				{% endif %}
+				<!-- END Django flash messages -->
 
+				<!-- Body Content -->
 				{% block content %} {% endblock %}
+
 			</div>
 		</div>
   	</div>
+	<!-- END Content -->
 
 
     <!-- Optional JavaScript -->

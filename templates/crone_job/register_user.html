@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+<!-- Title only for this site -->
+{% block title %}Register{% endblock %}
 
 {% block content %}
 	<h1 class="text-center pb-3">Register</h1>
@@ -6,6 +8,8 @@
 		<div class="col-8 mx-auto">
 			<form action="{% url 'register' %}" method="POST">
 				{% csrf_token %}
+
+				<!-- Flash error messages from Django forms for Registration -->
 				{% if form.errors %}
 					<div class="alert alert-warning alert-dismissable" role="alert">
 						<button class="close" data-dismiss="alert">
@@ -18,9 +22,11 @@
 							{% endif %}
 						{% endfor %}
 					</div>
-
 				{% endif %}
+
+				<!-- Show custom Django forms as paragraph in HTML -->
 				{{ form.as_p }}
+
 				<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Register</button>
 			</form>
 		</div>

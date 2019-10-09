@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
+<!-- Title only for this site -->
+{% block title %}Create Crone Job{% endblock %}
 
 {% block content %}
-
+	<!-- This content show only if user is logged in -->
 	{% if user.is_authenticated %}
 		<form method="POST">
 			{% csrf_token %}
@@ -12,7 +14,7 @@
 				<h5 class="pb-3">Titel und Addrese</h5>
 
 				<div class="form-group">
-					<input type="text" id="title" class="form-control" name="title" aria-describedby="title" placeholder="Enter Titel" required>
+					<input type="text" id="title" class="form-control" name="title" aria-describedby="title" placeholder="Titel" required autofocus>
 				</div>
 				<div class="form-group">
 					<input type="text" id="url" class="form-control" name="url" placeholder="http://" required>
@@ -27,7 +29,7 @@
 					<label class="form-check-label" for="httpAuth"><strong>Erforder HTTP-Authentifizierung</strong></label>
 				</div>
 				<div class="form-group">
-					<input type="text" name="userweb" class="form-control" id="user" aria-describedby="username" placeholder="Benutzername">
+					<input type="text" name="username" class="form-control" id="user" aria-describedby="username" placeholder="Benutzername">
 				</div>
 				<div class="form-group">
 					<input type="password" name="password" class="form-control" id="password" placeholder="Passwort">
@@ -43,75 +45,77 @@
 					<!-- START Minutes -->
 					<div class="minutes custom-form_flex">
 						<div class="form-check custom-form_radio-btn">
-							<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+							<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="all" checked>
 							<label class="form-check-label" for="exampleRadios1">
 								Alle
 							</label>
 						</div>
 
 						<div class="input-group mb-3 custom-label-width">
-							<select class="custom-select minutes-select"></select>
+							<select class="custom-select minutes-select" name="minutesAll"></select>
 							<div class="input-group-append">
-								<label class="input-group-text" for="inputGroupSelect02">Minute(n)</label>
+								<label class="input-group-text">Minute(n)</label>
 							</div>
 						</div>
 					</div>
 					<!-- END Minutes -->
+
 					<hr>
-					<!-- START Days -->
+
+					<!-- START Day -->
 					<div class="hours custom-form_flex">
 						<div class="form-check custom-form_radio-btn">
-							<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+							<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="day">
 							<label class="form-check-label" for="exampleRadios2">
 								Jeden Tag um
 							</label>
 						</div>
 
 						<div class="input-group mb-3 custom-label-width mr-3">
-							<select class="custom-select hours-select"></select>
+							<select class="custom-select hours-select" name="hoursDay"></select>
 							<div class="input-group-append">
-								<label class="input-group-text" for="inputGroupSelect02">Stunde(n)</label>
+								<label class="input-group-text">Stunde(n)</label>
 							</div>
 						</div>
 
 						<div class="input-group mb-3 custom-label-width">
-							<select class="custom-select minutes-select"></select>
+							<select class="custom-select minutes-select" name="minutesDay"></select>
 							<div class="input-group-append">
-								<label class="input-group-text" for="inputGroupSelect02">Minute(n)</label>
+								<label class="input-group-text">Minute(n)</label>
 							</div>
 						</div>
 					</div>
-					<!-- END Days -->
+					<!-- END Day -->
 
 					<hr>
 
 					<!-- START Months -->
 					<div class="months custom-form_flex">
 						<div class="form-check custom-form_radio-btn">
-							<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
-							<label class="form-check-label" for="exampleRadios3">
+							<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="always">
+							<label class="form-check-label">
 								Immer am
 							</label>
 						</div>
 
 						<div class="input-group mb-3 custom-label-width mr-3">
-							<select class="custom-select month-select"></select>
+							<select class="custom-select month-select" name="monthAlways"></select>
 							<div class="input-group-append">
 								<label class="input-group-text" for="inputGroupSelect02">des Monats</label>
 							</div>
 						</div>
 
 						<div class="input-group mb-3 custom-label-width mr-3">
-							<select class="custom-select hours-select"></select>
+							<select class="custom-select hours-select" name="hourAlways"></select>
 							<div class="input-group-append">
-								<label class="input-group-text" for="inputGroupSelect02">Stunde(n)</label>
+								<label class="input-group-text">Stunde(n)</label>
 							</div>
 						</div>
 
 						<div class="input-group mb-3 custom-label-width">
-							<select class="custom-select minutes-select"></select>
+							<select class="custom-select minutes-select" name="minutesAlways"></select>
 							<div class="input-group-append">
-								<label class="input-group-text" for="inputGroupSelect02">Minute(n)</label>
+								<label class="input-group-text">Minute(n)</label>
 							</div>
 						</div>
 
@@ -122,7 +126,7 @@
 					<!-- START UserDef -->
 					<div class="user-def">
 						<div class="form-check custom-form_radio-btn">
-							<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4">
+							<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="userDef">
 							<label class="form-check-label" for="exampleRadios4">
 								Benutzerdefiniert
 							</label>
@@ -162,8 +166,8 @@
 				<h5 class="pb-3">Allgemein</h5>
 
 				<div class="form-group form-check">
-					<input type="checkbox" class="form-check-input" id="answer">
-					<label class="form-check-label" for="answer">Antwort speichern</label>
+					<input type="checkbox" class="form-check-input" id="general" name="general">
+					<label class="form-check-label" for="general">Antwort speichern</label>
 				</div>
 			</div>
 

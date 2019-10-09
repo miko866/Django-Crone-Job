@@ -1,3 +1,7 @@
+/*
+* CUSTOM CSS
+*/
+
 .title-http,
 .user-pass,
 .execution,
@@ -5,6 +9,7 @@
 .general {
 	border: 1px solid cornflowerblue;
     padding: 1em;
+	border-radius: .4em;
 }
 
 .custom-form_flex {

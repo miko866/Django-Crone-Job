@@ -1,3 +1,7 @@
+/*
+* jQuery for generate minutes, hours and months in crone.html
+*/
+
 var selectionMinutes = "";
 var i = 0;
 for(var i = 0; i < 61; i++)
