@@ -54,7 +54,7 @@ def register_user(request):
 	return render(request, 'register_user.html', context)
 
 
-# Crone Job logic
+# Cron Job logic
 def crone(request):
 	if request.method == 'POST':
 		title = request.POST.get('title')
@@ -71,15 +71,73 @@ def crone(request):
 		password = request.POST.get('password')
 		enc_password = pbkdf2_sha256.encrypt(password, rounds=12000, salt_size=32)
 
-		all = request.POST.get('exampleRadios')
-		allMinutes = request.POST.get("minutesAll")
+		crone_radios = request.POST.get('croneRadios')
+		minutes_cron = request.POST.get("minutesCron")
+		hours_day_cron = request.POST.get("hoursDayCron")
+		minutes_day_cron = request.POST.get("minutesDayCron")
+		month_always_cron = request.POST.get("monthAlwaysCron")
+		hour_always_cron = request.POST.get("hourAlwaysCron")
+		minutes_always_cron = request.POST.get("minutesAlwaysCron")
+		user_def_cron = request.POST.get("userDefCron")
+		notification_jobs = request.POST.get("notificationJobs")
+		notification_error = request.POST.get("notificationError")
+		notification_deactivate = request.POST.get("notificationDeactivate")
 
-		print('GANDALF = ', http, enc_password, all, allMinutes)
+		if crone_radios:
+			cron = (crone_radios, minutes_cron, hours_day_cron, month_always_cron, minutes_day_cron, hour_always_cron, minutes_always_cron)
+			if minutes_cron != '00':
+				int_minutes_cron = int(minutes_cron)
+				int_minutes_cron -= 1
+				minutes_cron = str(int_minutes_cron)
 
-		'''if title:
+				list_minutes_cron = [minutes_cron, '*', '*', '*', '*']
+				str_minutes_cron = ', '.join(list_minutes_cron)
+
+				print('MINUTESCRON ', title, http, username, enc_password, str_minutes_cron)
+
+			elif hours_day_cron != '00' and minutes_day_cron != '00':
+				int_hours_day_cron = int(hours_day_cron)
+				int_minutes_day_cron = int(minutes_day_cron)
+
+				int_hours_day_cron -= 1
+				int_minutes_day_cron -= 1
+
+				hours_day_cron = str(int_hours_day_cron)
+				minutes_day_cron = str(int_minutes_day_cron)
+
+				list_day_cron = [minutes_day_cron, hours_day_cron, '*', '*', '*']
+				str_day_cron = ', '.join(list_day_cron)
+
+				print('DAYSCRON ', title, http, username, enc_password, str_day_cron)
+
+			elif minutes_always_cron != '00' and hour_always_cron != '00' and month_always_cron != '00':
+
+				int_minutes_always_croni = int(minutes_always_cron)
+				int_hour_always_cron = int(hour_always_cron)
+				int_month_always_cron = int(month_always_cron)
+
+				int_minutes_always_croni -= 1
+				int_hour_always_cron -= 1
+
+				minutes_always_cron = str(int_minutes_always_croni)
+				hour_always_cron = str(int_hour_always_cron)
+				month_always_cron = str(int_month_always_cron)
+
+				list_always_cron = [minutes_always_cron, hour_always_cron, month_always_cron, '*', '*']
+				str_always_cron = ', '.join(list_always_cron)
+
+				print('ALWAYSCRON ', title, http, username, enc_password,  str_always_cron)
+			else:
+				print('USERCRON ', title, http, username, enc_password, user_def_cron)
+
+		# print('GANDALF = ', cron)
+
+		'''
+		if title:
             obj = CronJob.objects.create(title=title, url=url, http=http, username=username, password=password)
             obj.save()
-            messages.success(request, 'You have been created new Crone...')'''
+            messages.success(request, 'You have been created new Crone...')
+        '''
 		return render(request, 'crone.html')
 	else:
 		return render(request, 'crone.html')

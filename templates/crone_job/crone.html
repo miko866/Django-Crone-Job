@@ -58,14 +58,14 @@
 					<!-- START Minutes -->
 					<div class="minutes custom-form_flex">
 						<div class="form-check custom-form_radio-btn">
-							<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="all" checked>
+							<input class="form-check-input" type="radio" name="croneRadios" id="exampleRadios1" value="allCrone" checked>
 							<label class="form-check-label" for="exampleRadios1">
 								Alle
 							</label>
 						</div>
 
 						<div class="input-group mb-3 custom-label-width">
-							<select class="custom-select minutes-select" name="minutesAll"></select>
+							<select class="custom-select minutes-select" name="minutesCron"></select>
 							<div class="input-group-append">
 								<label class="input-group-text">Minute(n)</label>
 							</div>
@@ -78,21 +78,21 @@
 					<!-- START Day -->
 					<div class="hours custom-form_flex">
 						<div class="form-check custom-form_radio-btn">
-							<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="day">
+							<input class="form-check-input" type="radio" name="croneRadios" id="exampleRadios2" value="dayCrone">
 							<label class="form-check-label" for="exampleRadios2">
 								Jeden Tag um
 							</label>
 						</div>
 
 						<div class="input-group mb-3 custom-label-width mr-3">
-							<select class="custom-select hours-select" name="hoursDay"></select>
+							<select class="custom-select hours-select" name="hoursDayCron"></select>
 							<div class="input-group-append">
 								<label class="input-group-text">Stunde(n)</label>
 							</div>
 						</div>
 
 						<div class="input-group mb-3 custom-label-width">
-							<select class="custom-select minutes-select" name="minutesDay"></select>
+							<select class="custom-select minutes-select" name="minutesDayCron"></select>
 							<div class="input-group-append">
 								<label class="input-group-text">Minute(n)</label>
 							</div>
@@ -102,47 +102,50 @@
 
 					<hr>
 
-					<!-- START Months -->
+					<!-- START Always -->
 					<div class="months custom-form_flex">
 						<div class="form-check custom-form_radio-btn">
-							<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="always">
+							<input class="form-check-input" type="radio" name="croneRadios" id="exampleRadios3" value="alwaysCrone">
 							<label class="form-check-label">
 								Immer am
 							</label>
 						</div>
 
 						<div class="input-group mb-3 custom-label-width mr-3">
-							<select class="custom-select month-select" name="monthAlways"></select>
+							<select class="custom-select month-select" name="monthAlwaysCron"></select>
 							<div class="input-group-append">
 								<label class="input-group-text" for="inputGroupSelect02">des Monats</label>
 							</div>
 						</div>
 
 						<div class="input-group mb-3 custom-label-width mr-3">
-							<select class="custom-select hours-select" name="hourAlways"></select>
+							<select class="custom-select hours-select" name="hourAlwaysCron"></select>
 							<div class="input-group-append">
 								<label class="input-group-text">Stunde(n)</label>
 							</div>
 						</div>
 
 						<div class="input-group mb-3 custom-label-width">
-							<select class="custom-select minutes-select" name="minutesAlways"></select>
+							<select class="custom-select minutes-select" name="minutesAlwaysCron"></select>
 							<div class="input-group-append">
 								<label class="input-group-text">Minute(n)</label>
 							</div>
 						</div>
 
 					</div>
-					<!-- END Months -->
+					<!-- END Always -->
 
 					<hr>
 					<!-- START UserDef -->
-					<div class="user-def">
+					<div class="user-def custom-form_flex">
 						<div class="form-check custom-form_radio-btn">
-							<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="userDef">
+							<input class="form-check-input" type="radio" name="croneRadios" id="exampleRadios4" value="userCrone">
 							<label class="form-check-label" for="exampleRadios4">
 								Benutzerdefiniert
 							</label>
+						</div>
+						<div class="input-group mb-3 custom-label-width">
+							<input type="text" class="form-control" name="userDefCron" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 						</div>
 					</div>
 					<!-- END UserDef -->
@@ -158,17 +161,17 @@
 
 				<div class="notifications_checks">
 					<div class="form-group form-check">
-						<input type="checkbox" class="form-check-input" id="jobs">
+						<input type="checkbox" class="form-check-input" id="jobs" name="notificationJobs">
 						<label class="form-check-label" for="jobs">Fehlschlag des Jobs</label>
 					</div>
 
 					<div class="form-group form-check">
-						<input type="checkbox" class="form-check-input" id="error">
+						<input type="checkbox" class="form-check-input" id="error" name="notificationError">
 						<label class="form-check-label" for="error">erfolgreichem Abruf nach vorherigem Fehlslag</label>
 					</div>
 
 					<div class="form-group form-check">
-						<input type="checkbox" class="form-check-input" id="deactivate">
+						<input type="checkbox" class="form-check-input" id="deactivate" name="notificationDeactivate">
 						<label class="form-check-label" for="deactivate">automatischer Deaktivierung wegen zu vieler Fehlschläge</label>
 					</div>
 				</div>

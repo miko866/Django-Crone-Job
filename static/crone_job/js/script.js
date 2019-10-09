@@ -6,7 +6,7 @@ var selectionMinutes = "";
 for(var i = 0; i < 61; i++)
 {
     var j = zeroFill(i, 2);
-    selectionMinutes += "<option value='"+ j +"00'>"+ j + "</option>";
+    selectionMinutes += "<option value='"+ j +"'>"+ j + "</option>";
 }
 $(".minutes-select").html(selectionMinutes);
 function zeroFill( number, width )
@@ -25,7 +25,7 @@ var selectionHours = "";
 for(var i = 0; i < 25; i++)
 {
     var j = zeroFill(i, 2);
-    selectionHours += "<option value='"+ j +"00'>"+ j + "</option>";
+    selectionHours += "<option value='"+ j +"'>"+ j + "</option>";
 }
 $(".hours-select").html(selectionHours);
 function zeroFill( number, width )
@@ -43,7 +43,7 @@ var selectionMonths = "";
 for(var i = 0; i < 13; i++)
 {
     var j = zeroFill(i, 2);
-    selectionMonths += "<option value='"+ j +"00'>"+ j + "</option>";
+    selectionMonths += "<option value='"+ j +"'>"+ j + "</option>";
 }
 $(".month-select").html(selectionMonths);
 function zeroFill( number, width )
