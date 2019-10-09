@@ -3,7 +3,6 @@
 */
 
 var selectionMinutes = "";
-var i = 0;
 for(var i = 0; i < 61; i++)
 {
     var j = zeroFill(i, 2);
@@ -23,7 +22,6 @@ function zeroFill( number, width )
 
 
 var selectionHours = "";
-var i = 0;
 for(var i = 0; i < 25; i++)
 {
     var j = zeroFill(i, 2);
@@ -42,7 +40,6 @@ function zeroFill( number, width )
 
 
 var selectionMonths = "";
-var i = 0;
 for(var i = 0; i < 13; i++)
 {
     var j = zeroFill(i, 2);
@@ -58,3 +55,29 @@ function zeroFill( number, width )
   }
   return number + ""; // always return a string
 }
+
+
+
+//! Don't working
+$(document).ready(function () {
+
+
+		TriggerAlertClose();
+
+
+		$('.alert').on('change', '.alert',function(e) {
+    $(this).closest('.from-group').val(($('#want').is(':checked')) ? "yes" : "no");
+    var ans=$(this).val();
+    console.log(($('#want').is(':checked')));
+});
+});
+
+function TriggerAlertClose() {
+		window.setTimeout(function () {
+			$(".alert").fadeTo(1000, 0).slideUp(1000, function () {
+				$(this).remove();
+			});
+		}, 5000);
+	}
+
+

@@ -19,7 +19,7 @@ def login_user(request):
             messages.success(request, 'You have been logged in.')
             return redirect('crone')
         else:
-            messages.success(request, 'Incorrect info.')
+            messages.error(request, 'Incorrect info.')
             return redirect('home')
     else:
         return render(request, 'login_user.html', {})

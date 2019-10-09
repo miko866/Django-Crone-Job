@@ -256,6 +256,6 @@ fabric.properties
 # End of https://www.gitignore.io/api/pycharm,python,django
 
 #CUSTOM
-.venv
+venv
 .DS_Store
 .idea
