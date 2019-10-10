@@ -5,9 +5,11 @@
 {% block content %}
 	<!-- This content show only if user is logged in -->
 	{% if user.is_authenticated %}
-		<p>
+
+		<!-- <p>
 			Aktif: <span id="tes"></span>
-		</p>
+		</p> -->
+
 		<h2>Cron-Job erstellen</h2>
 
 		<p class="text-justify">
@@ -68,7 +70,7 @@
 						</div>
 
 						<div class="input-group mb-3 custom-label-width">
-							<select class="custom-select minutes-select allCrone" name="minutesCron" id="allCrone"></select>
+							<select class="custom-select minutes-select allCrone disabled-radio" name="minutesCron" id="allCrone"></select>
 							<div class="input-group-append">
 								<label class="input-group-text">Minute(n)</label>
 							</div>
@@ -88,14 +90,14 @@
 						</div>
 
 						<div class="input-group mb-3 custom-label-width mr-3">
-							<select class="custom-select hours-select dayCrone" name="hoursDayCron" id="dayCrone"></select>
+							<select class="custom-select hours-select dayCrone disabled-radio" name="hoursDayCron" id="dayCrone"></select>
 							<div class="input-group-append">
 								<label class="input-group-text">Stunde(n)</label>
 							</div>
 						</div>
 
 						<div class="input-group mb-3 custom-label-width" id="dayCrone">
-							<select class="custom-select minutes-select dayCrone" name="minutesDayCron" id="dayCrone"></select>
+							<select class="custom-select minutes-select dayCrone disabled-radio" name="minutesDayCron" id="dayCrone"></select>
 							<div class="input-group-append">
 								<label class="input-group-text">Minute(n)</label>
 							</div>
@@ -115,21 +117,21 @@
 						</div>
 
 						<div class="input-group mb-3 custom-label-width mr-3">
-							<select class="custom-select month-select alwaysCrone" name="monthAlwaysCron" id="alwaysCrone"></select>
+							<select class="custom-select month-select alwaysCrone disabled-radio" name="monthAlwaysCron" id="alwaysCrone"></select>
 							<div class="input-group-append">
 								<label class="input-group-text" for="inputGroupSelect02">des Monats</label>
 							</div>
 						</div>
 
 						<div class="input-group mb-3 custom-label-width mr-3">
-							<select class="custom-select hours-select alwaysCrone" name="hourAlwaysCron" id="alwaysCrone"></select>
+							<select class="custom-select hours-select alwaysCrone disabled-radio" name="hourAlwaysCron" id="alwaysCrone"></select>
 							<div class="input-group-append">
 								<label class="input-group-text">Stunde(n)</label>
 							</div>
 						</div>
 
 						<div class="input-group mb-3 custom-label-width">
-							<select class="custom-select minutes-select alwaysCrone" name="minutesAlwaysCron" id="alwaysCrone"></select>
+							<select class="custom-select minutes-select alwaysCrone disabled-radio" name="minutesAlwaysCron" id="alwaysCrone"></select>
 							<div class="input-group-append">
 								<label class="input-group-text">Minute(n)</label>
 							</div>
@@ -148,7 +150,7 @@
 							</label>
 						</div>
 						<div class="input-group mb-3 custom-label-width">
-							<input type="text" class="form-control disabled" name="userDefCron" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							<input type="text" class="form-control userCrone disabled-radio" id="userCrone" name="userDefCron" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 						</div>
 					</div>
 					<!-- END UserDef -->

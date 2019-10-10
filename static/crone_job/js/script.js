@@ -54,21 +54,31 @@ $(document).ready(function () {
 	//* END jQuery for generate minutes, hours and months in crone.html
 
 
-	// Auto hide Django messages
+	/*
+	 * START Auto hide Django messages
+	 */
+
 	$.when($('.alert')).then((self) => {
 		window.setTimeout(function () {
 			$(".alert").remove()
 		}, 4000);
 	});
+	// END Auto hide Django messages
+
+
+	/*
+	 *  START Enabled only checked Crone time form
+	 */
 
 	$(function () {
 		$('.radio-button').on('change', function () {
 			var crone = $(this).val();
-			$('#tes').text(crone);
-			$('.custom-select').not('#' + crone).prop('disabled', true);
+			// $('#tes').text(crone);
+			$('.disabled-radio').not('#' + crone).prop('disabled', true);
 			$('.' + crone).prop('disabled', false);
 		});
 	});
+	// END Enabled only checked Crone time form
 
 });
 

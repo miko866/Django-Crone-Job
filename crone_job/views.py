@@ -136,7 +136,7 @@ def crone(request):
 		# Logic for Cron
 		if crone_radios:
 			# If not only 00
-			if minutes_cron != '00':
+			if minutes_cron != '00' and minutes_cron is not None:
 				# Change to int and -1 because minutes start at 0
 				int_minutes_cron = int(minutes_cron)
 				int_minutes_cron -= 1
@@ -160,7 +160,7 @@ def crone(request):
 				messages.success(request, 'Du wurdest neu Cron-Job erstellt...')
 
 			# If not only 00
-			elif hours_day_cron != '00' and minutes_day_cron != '00':
+			elif hours_day_cron != '00' and minutes_day_cron != '00' and hours_day_cron is not None and minutes_day_cron is not None:
 				# Change to int and -1 because minutes and hours start at 0
 				int_hours_day_cron = int(hours_day_cron)
 				int_minutes_day_cron = int(minutes_day_cron)
@@ -189,7 +189,7 @@ def crone(request):
 				messages.success(request, 'Du wurdest neu Cron-Job erstellt...')
 
 			# If not only 00
-			elif minutes_always_cron != '00' and hour_always_cron != '00' and month_always_cron != '00':
+			elif minutes_always_cron != '00' and hour_always_cron != '00' and month_always_cron != '00' and minutes_always_cron is not None and hour_always_cron is not None and month_always_cron is not None:
 				# Change to int and -1 because minutes and hours start at 0
 				int_minutes_always_croni = int(minutes_always_cron)
 				int_hour_always_cron = int(hour_always_cron)
