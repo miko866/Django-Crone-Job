@@ -18,4 +18,4 @@ class CronJob(models.Model):
 
 	# Show in Django Admin string and not only Object
 	def __str__(self):
-		return self.title
+		return self.title + ' | ' + self.url
