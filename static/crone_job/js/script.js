@@ -1,5 +1,4 @@
-
-$(document).ready(function() {
+$(document).ready(function () {
 
 	/*
 	* START jQuery for generate minutes, hours and months in crone.html
@@ -60,6 +59,15 @@ $(document).ready(function() {
 		window.setTimeout(function () {
 			$(".alert").remove()
 		}, 4000);
+	});
+
+	$(function () {
+		$('.radio-button').on('change', function () {
+			var crone = $(this).val();
+			$('#tes').text(crone);
+			$('.custom-select').not('#' + crone).prop('disabled', true);
+			$('.' + crone).prop('disabled', false);
+		});
 	});
 
 });

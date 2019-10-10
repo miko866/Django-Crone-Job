@@ -33,6 +33,6 @@
 	display: none;
 }
 
-/*.disabled {
+.disabled {
 	pointer-events:none;
-}*/
+}

@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm
 from passlib.hash import pbkdf2_sha256
+from django.contrib.auth.decorators import login_required
 import re
 
 
@@ -63,6 +64,7 @@ def register_user(request):
 	return render(request, 'register_user.html', context)
 
 
+@login_required
 # Cron Job logic
 def crone(request):
 	# Listener for POST
@@ -224,9 +226,9 @@ def crone(request):
 				print('USER ', user_def_cron)
 
 				if len(user_def_cron) > 5:
-					# If too long show messag and render
+					# If too long show message and render
 					messages.error(request,
-								   'Too long')
+								   'Ihr regulärer Ausdruck ist nicht korrekt!')
 					return render(request, 'crone.html')
 
 				# Check content with Regex
