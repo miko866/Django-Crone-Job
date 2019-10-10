@@ -8,11 +8,13 @@ from passlib.hash import pbkdf2_sha256
 
 # Landing page for login
 def home(request):
+
 	return render(request, 'home.html', {})
 
 
 # Login existing user
 def login_user(request):
+
 	if request.method == 'POST':
 		username = request.POST['username']
 		password = request.POST['password']
