@@ -1,12 +1,43 @@
 {% extends 'base.html' %}
 
 <!-- Title only for this site -->
-{% block title %}Historie{% endblock %}
+{% block title %}Records{% endblock %}
 
 {% block content %}
+	{% if user.is_authenticated %}
 
-	<!-- <h1>Du musst eingeloggt sein!</h1> -->
-	<h1 class="text-center pb-3">Eintragen</h1>
+		<!-- <h1>Du musst eingeloggt sein!</h1> -->
+		<h1 class="text-center pb-4">Eintragen</h1>
 
+			{% if all_records %}
+				<table class="table table-hover">
+
+					  <thead>
+						<tr>
+						  <th scope="col">#</th>
+						  <th scope="col">Benutzer</th>
+						  <th scope="col">Titel</th>
+						  <th scope="col">Url</th>
+						  <th scope="col">Cron</th>
+						</tr>
+					  </thead>
+					{% for record in all_records %}
+					  <tbody>
+						<tr>
+						  <th scope="row">{{ record.id }}</th>
+						  <td>{{ user.username }}</td>
+						  <td>{{ record.title }}</td>
+						  <td>{{ record.url }}</td>
+						  <td>{{ record.cron }}</td>
+						</tr>
+
+					  </tbody>
+					{% endfor %}
+				</table>
+			{% endif %}
+
+	{% else %}
+		<h1>Bitte melden Sie sich an!</h1>
+	{% endif %}
 
 {% endblock %}

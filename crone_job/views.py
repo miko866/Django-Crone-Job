@@ -196,12 +196,11 @@ def crone(request):
 				obj.save()
 				messages.success(request, 'Du wurdest neu Cron-Job erstellt...')
 
-		# print('GANDALF = ', cron)
-
 		return render(request, 'crone.html')
 	else:
 		return render(request, 'crone.html')
 
 
 def entries(request):
-	return render(request, 'entries.html', {})
+	all_records = CronJob.objects.all
+	return render(request, 'entries.html', {'all_records': all_records})
