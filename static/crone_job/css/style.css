@@ -45,3 +45,13 @@ tbody th::before {
 	counter-increment: tbody;
 	content: counter(tbody) '.';
 }
+
+.online-user {
+	align-self: center;
+    padding-right: 2em;
+}
+
+.online-user__color {
+	color: cornflowerblue;
+	padding-right: .3em;
+}

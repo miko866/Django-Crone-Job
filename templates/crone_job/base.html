@@ -44,6 +44,9 @@
 
 					<!-- Links -->
 					{% if user.is_authenticated %}
+						<li class="nav-item online-user">
+							<em class="online-user__color">{{ user.username }}</em> is online
+						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="{% url 'entries'%}">Eintragen</a>
 						</li>
