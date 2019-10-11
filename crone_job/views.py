@@ -8,7 +8,6 @@ from .forms import SignUpForm
 from passlib.hash import pbkdf2_sha256
 from django.contrib.auth.decorators import login_required
 import re
-from django.contrib.auth.models import User
 
 
 # Landing page for login
@@ -67,6 +66,7 @@ def register_user(request):
 	return render(request, 'register_user.html', context)
 
 
+# Decorator -> only logged user can that use
 @login_required
 # Cron Job logic
 def crone(request):
@@ -139,10 +139,12 @@ def crone(request):
 		if general_answer is None:
 			general_answer = False
 
-		# Logic for Cron
+		# Logic for Cron-Job
+		# Any radio checked show error message
 		if crone_radios != '' and crone_radios is None:
-			messages.error(request, 'Noo any Radios ...')
+			messages.error(request, 'Noo any Radios ... 😭')
 			return render(request, 'crone.html')
+		# Have one checked
 		elif crone_radios:
 			# If not only 00
 			if minutes_cron != '00' and minutes_cron is not None:
