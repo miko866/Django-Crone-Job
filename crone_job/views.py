@@ -25,10 +25,10 @@ def login_user(request):
 		user = authenticate(request, username=username, password=password)
 		if user is not None:
 			login(request, user)
-			messages.success(request, 'Sie sind eingeloggt.')
+			messages.success(request, 'Sie sind eingeloggt. 🥳')
 			return redirect('crone')
 		else:
-			messages.error(request, 'Falsche Informationen.')
+			messages.error(request, 'Falsche 👻.')
 			return redirect('home')
 	else:
 		return render(request, 'login_user.html', {})
@@ -37,7 +37,7 @@ def login_user(request):
 # Simple logout
 def logout_user(request):
 	logout(request)
-	messages.success(request, 'Sie haben sich abgemeldet.')
+	messages.success(request, 'Sie haben sich abgemeldet. 🦄 ')
 	return redirect('home')
 
 
@@ -55,7 +55,7 @@ def register_user(request):
 			password = form.cleaned_data['password1']
 			user = authenticate(username=username, password=password)
 			login(request, user)
-			messages.success(request, 'Sie wurden registriert.')
+			messages.success(request, 'Sie wurden registriert. 🦄 ')
 			return redirect('crone')
 	else:
 		# Show only form
@@ -168,7 +168,7 @@ def crone(request):
 											 general_answer=general_answer)
 				obj.save()
 				# If success show message
-				messages.success(request, 'Du wurdest neu Cron-Job erstellt...')
+				messages.success(request, 'Es wurde ein neuer Cron-Job erstellt... 🎊 ')
 
 			# If not only 00
 			elif hours_day_cron != '00' and minutes_day_cron != '00' and hours_day_cron is not None and minutes_day_cron is not None:
@@ -197,7 +197,7 @@ def crone(request):
 											 general_answer=general_answer)
 				obj.save()
 				# If success show message
-				messages.success(request, 'Du wurdest neu Cron-Job erstellt...')
+				messages.success(request, 'Es wurde ein neuer Cron-Job erstellt... 🎊 ')
 
 			# If not only 00
 			elif minutes_always_cron != '00' and hour_always_cron != '00' and month_always_cron != '00' and minutes_always_cron is not None and hour_always_cron is not None and month_always_cron is not None:
@@ -228,7 +228,7 @@ def crone(request):
 											 general_answer=general_answer)
 				obj.save()
 				# If success show message
-				messages.success(request, 'Du wurdest neu Cron-Job erstellt...')
+				messages.success(request, 'Es wurde ein neuer Cron-Job erstellt... 🎊 ')
 			else:
 				# For User def. Cron
 				"""print('USERCRON ', title, url, http, username, enc_password, user_def_cron, notification_jobs,
@@ -253,7 +253,7 @@ def crone(request):
 											 general_answer=general_answer)
 				obj.save()
 				# If success show message
-				messages.success(request, 'Es wurde ein neuer Cron-Job erstellt...')
+				messages.success(request, 'Es wurde ein neuer Cron-Job erstellt... 🎊 ')
 
 		# The stay here
 		return render(request, 'crone.html')
