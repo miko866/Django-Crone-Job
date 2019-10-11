@@ -1,1 +1,1 @@
-web: gunicorn django_crone_job.wsig --log-file -
+web: gunicorn django_crone_job.wsgi --log-file -
