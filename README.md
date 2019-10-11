@@ -96,6 +96,10 @@ In to your browser.
 python manage.py test crone_job
 ```
 
+## HEROKU
+```
+https://gentle-lowlands-31299.herokuapp.com/
+```
 
 ## Copyright
 
