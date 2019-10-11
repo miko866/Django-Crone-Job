@@ -18,7 +18,7 @@ This web-application and database are for Modul 307
 
 ### Structure
 
-Below, you see the application structure for Awesome Blog.
+Below, you see the application structure for Django Cron-Job.
 
 ```
 ├── Procfile
