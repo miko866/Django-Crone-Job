@@ -73,7 +73,6 @@ $(document).ready(function () {
 	$(function () {
 		$('.radio-button').on('change', function () {
 			var crone = $(this).val();
-			// $('#tes').text(crone);
 			$('.disabled-radio').not('#' + crone).prop('disabled', true);
 			$('.' + crone).prop('disabled', false);
 		});

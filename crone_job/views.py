@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
+from django.template import RequestContext
+
 from .models import CronJob
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -257,3 +259,12 @@ def entries(request):
 	all_records = CronJob.objects.all
 	# Send the Date into FrondEnd
 	return render(request, 'entries.html', {'all_records': all_records})
+
+
+# 404 work only DEBUG=False
+def handler_404(request, exception):
+	context = RequestContext(request)
+	err_code = 404
+	response = render_to_response('404.html', {"code": err_code}, context)
+	response.status_code = 404
+	return response

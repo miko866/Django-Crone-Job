@@ -33,6 +33,16 @@
 	display: none;
 }
 
-.disabled {
-	pointer-events:none;
+.custom-img {
+	width: 80%;
+}
+
+table {
+  counter-reset: tbody;
+}
+
+tbody th::before {
+	counter-increment: tbody;
+	content: counter(tbody) '.';
+
 }

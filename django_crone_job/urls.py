@@ -2,6 +2,10 @@ from django.contrib import admin
 from django.urls import path
 from crone_job import views
 
+
+# Work only DEBUG=False
+handler_404 = 'crone_job.views.handler_404'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
