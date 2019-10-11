@@ -91,6 +91,12 @@ Starting development server at ...
 
 In to your browser.
 
+## Test URL
+```
+python manage.py test crone_job
+```
+
+
 ## Copyright
 
 &copy; miko866 <br />
