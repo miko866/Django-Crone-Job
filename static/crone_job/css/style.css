@@ -44,5 +44,4 @@ table {
 tbody th::before {
 	counter-increment: tbody;
 	content: counter(tbody) '.';
-
 }
