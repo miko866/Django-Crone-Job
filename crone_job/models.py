@@ -2,9 +2,11 @@
 Create models for SQLite DB
 """
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class CronJob(models.Model):
+	author = models.CharField(max_length=200, null=False, default='')
 	title = models.CharField(max_length=200, null=False, default='')
 	url = models.URLField(max_length=250, null=False, default='')
 	http = models.BooleanField(default=False, null=False)

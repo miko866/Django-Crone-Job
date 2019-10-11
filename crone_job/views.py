@@ -8,6 +8,7 @@ from .forms import SignUpForm
 from passlib.hash import pbkdf2_sha256
 from django.contrib.auth.decorators import login_required
 import re
+from django.contrib.auth.models import User
 
 
 # Landing page for login
@@ -72,6 +73,9 @@ def crone(request):
 	# Listener for POST
 	if request.method == 'POST':
 		# Take data from request
+
+		author = request.user.username
+
 		title = request.POST.get('title')
 		url = request.POST.get('url')
 
@@ -136,7 +140,10 @@ def crone(request):
 			general_answer = False
 
 		# Logic for Cron
-		if crone_radios:
+		if crone_radios != '' and crone_radios is None:
+			messages.error(request, 'Noo any Radios ...')
+			return render(request, 'crone.html')
+		elif crone_radios:
 			# If not only 00
 			if minutes_cron != '00' and minutes_cron is not None:
 				# Change to int and -1 because minutes start at 0
@@ -152,7 +159,7 @@ def crone(request):
 					  notification_error, notification_deactivate, general_answer)
 
 				# Save into DB
-				obj = CronJob.objects.create(title=title, url=url, http=http, username=username, password=enc_password,
+				obj = CronJob.objects.create(author=author, title=title, url=url, http=http, username=username, password=enc_password,
 											 cron=str_minutes_cron, notification_jobs=notification_jobs,
 											 notification_error=notification_error,
 											 notification_deactivate=notification_deactivate,
@@ -181,7 +188,7 @@ def crone(request):
 					  notification_error, notification_deactivate, general_answer)
 
 				# Save into DB
-				obj = CronJob.objects.create(title=title, url=url, http=http, username=username, password=enc_password,
+				obj = CronJob.objects.create(author=author, title=title, url=url, http=http, username=username, password=enc_password,
 											 cron=str_day_cron, notification_jobs=notification_jobs,
 											 notification_error=notification_error,
 											 notification_deactivate=notification_deactivate,
@@ -212,7 +219,7 @@ def crone(request):
 					  notification_error, notification_deactivate, general_answer)
 
 				# Save into DB
-				obj = CronJob.objects.create(title=title, url=url, http=http, username=username, password=enc_password,
+				obj = CronJob.objects.create(author=author, title=title, url=url, http=http, username=username, password=enc_password,
 											 cron=str_always_cron, notification_jobs=notification_jobs,
 											 notification_error=notification_error,
 											 notification_deactivate=notification_deactivate,
@@ -237,7 +244,7 @@ def crone(request):
 				reg_user_def_cron = re.search(r'\d[*]*', user_def_cron)
 
 				# Save into DB
-				obj = CronJob.objects.create(title=title, url=url, http=http, username=username, password=enc_password,
+				obj = CronJob.objects.create(author=author, title=title, url=url, http=http, username=username, password=enc_password,
 											 cron=reg_user_def_cron, notification_jobs=notification_jobs,
 											 notification_error=notification_error,
 											 notification_deactivate=notification_deactivate,
