@@ -244,7 +244,7 @@ def crone(request):
 											 general_answer=general_answer)
 				obj.save()
 				# If success show message
-				messages.success(request, 'Du wurdest neu Cron-Job erstellt...')
+				messages.success(request, 'Es wurde ein neuer Cron-Job erstellt...')
 
 		# The stay here
 		return render(request, 'crone.html')
